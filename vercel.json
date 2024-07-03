@@ -1,23 +1,45 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "src/index.ts",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
+  "version": 2,
+  "builds": [
     {
-        "src": "/(.*)",
-        "dest": "/"
+      "src": "src/index.ts",
+      "use": "@vercel/node"
     }
-   ],
-    "env": {
-      "PORT": "8000",
-      "DATABASE_URL": "postgresql://email-organizer_owner:hyg0nqCfiQx6@ep-dry-bar-a5a2a2zg.us-east-2.aws.neon.tech/email-organizer?sslmode:require",
-      "NODE_ENV": "dev",
-      "JWT_SECRET": "786347dadsfrgth4203847jnd2lj3ne23",
-      "DOMAIN": "triomail.com"
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
     }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Credentials",
+          "value": "true"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "PORT": "8000",
+    "DATABASE_URL": "postgresql://email-organizer_owner:hyg0nqCfiQx6@ep-dry-bar-a5a2a2zg.us-east-2.aws.neon.tech/email-organizer?sslmode:require",
+    "NODE_ENV": "dev",
+    "JWT_SECRET": "786347dadsfrgth4203847jnd2lj3ne23",
+    "DOMAIN": "triomail.com"
   }
-  
+}
