@@ -1,5 +1,5 @@
 {
-  "name": "trade-copier",
+  "name": "email-organzier",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "dev": "nodemon src/index.ts",
     "migrate": "prisma migrate dev",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npx prisma generate --no-engine"
   },
   "author": "",
   "license": "ISC",
@@ -34,7 +35,6 @@
   "devDependencies": {
     "@types/cookie-parser": "^1.4.7",
     "@types/jsonwebtoken": "^9.0.6",
-    "@types/node": "^20.13.0",
-    "prisma": "^5.16.1"
+    "@types/node": "^20.13.0"
   }
 }
