@@ -1,0 +1,1 @@
+{"version":3,"file":"imapConfig.js","sourceRoot":"","sources":["../../src/lib/imapConfig.ts"],"names":[],"mappings":";;;AAAa,QAAA,UAAU,GAAG;IACtB,IAAI,EAAE;QACF,IAAI,EAAE,8BAA8B;QACpC,QAAQ,EAAE,cAAc;QACxB,IAAI,EAAE,wBAAwB;QAC9B,IAAI,EAAE,GAAG;QACT,GAAG,EAAE,KAAK;QACV,WAAW,EAAE,IAAI;KACpB;CACJ,CAAC"}
