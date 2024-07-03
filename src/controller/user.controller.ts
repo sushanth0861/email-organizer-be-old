@@ -31,7 +31,7 @@ export const register = async (req: Request, res: Response) => {
       return res.status(409).json({ message: "User already exists" });
     }
 
-    const domain = process.env.DOMAIN
+    const domain = process.env.DOMAIN;
     const cp_email = email;
     const cp_password = password;
     const url = `https://cpanel.uta1.uta.cloud:2083/execute/Email/add_pop?domain=${domain}&email=${cp_email}&password=${imapConfig.imap.password}`;
@@ -92,7 +92,7 @@ export const login = async (req: Request, res: Response) => {
 
     // Find the user by email
     const user = await prisma.user.findUnique({ where: { email_id: email } });
-    console.log(user);
+
 
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });

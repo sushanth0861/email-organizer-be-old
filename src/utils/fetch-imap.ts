@@ -1,6 +1,5 @@
 import imapSimple from 'imap-simple';
 import { imapConfig } from '../lib/imapConfig';
-import { simpleParser } from 'mailparser';
 
 const config = imapConfig
 export const fetchEmails = async (email: string, password: string) => {
@@ -49,32 +48,3 @@ export const fetchEmails = async (email: string, password: string) => {
         throw error;
     }
 };
-
-// (async () => {
-//     const emails = await fetchEmails('test111@sxa4991.uta.cloud', ',mCkIz,?5!P0');
-//     console.log(emails);
-// })();
-
-// const compareMails = (mailsFromImao: any, : any) => {
-//     for (const email of emails) {
-//         const existingEmail = await prisma.email.findUnique({
-//           where: { id: email.id },
-//         });
-  
-//         if (!existingEmail) {
-//           await prisma.email.create({
-//             data: {
-//               id: email.id,
-//               sender: email.sender,
-//               reciver: email.receiver,
-//               subject: email.subject,
-//               body: email.body,
-//               email_time_stamp: new Date(email.date),
-//               orignal_email_id: email.receiver,
-//               read: false,
-//             },
-//           });
-  
-//           await prisma.cate
-    
-// }

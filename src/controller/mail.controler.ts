@@ -155,7 +155,7 @@ export const moveMail = async (req: Request, res: Response) => {
   const { mail_id, user_id, from, to } = req.body;
 
   try {
-    const result = await updateMailCategory(user_id, mail_id, from, to);
+    const result = await updateMailCategory(user_id,mail_id, from, to);
     res.status(200).json(result);
   } catch (error) {
     console.error(`Error moving mail from ${from} to ${to}:`, error);

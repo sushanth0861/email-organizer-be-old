@@ -1,4 +1,3 @@
-import { Category } from "@prisma/client";
 import { prisma } from "../lib/db";
 import { Request, Response } from "express";
 import { fetchEmails } from "../utils/fetch-imap";
@@ -229,47 +228,29 @@ export const getMailsByCategory = async (req: Request, res: Response) => {
       },
     });
 
-//     category
-// : 
-// "inbox"
-// date
-// : 
-// "2024-07-01T21:08:01.000Z"
-// email
-// : 
-// "yadvendras20@gmail.com"
-// id
-// : 
-// "5poi@sxa4991.uta.cloud"
-// name
-// : 
-// "..."
-// read
-// : 
-// false
-// star
-// : 
-// false
-// subject
-// : 
-// "recived mail 3"
-// text
-// : 
-// "--00000000000
 
 
-    const newPayload= payload.map((m) => {
-      return {
-        id: m.id,
-        category,
-        name: "...", // You can adjust this as needed
-        email: m.sender,
-        subject: m.subject,
-        text: m.body,
-        date: m.email_time_stamp,
-        read: m.read,
-        star: m.star,}
-    })
+const newPayload = [];
+
+for (const m of payload) {
+  const sender = await prisma.user.findUnique({
+    where: { email_id: m.sender },
+  });
+
+  const name = sender ? `${sender.first_name} ${sender.last_name}` : "...";
+
+  newPayload.push({
+    id: m.id,
+    category,
+    name,
+    email: m.sender,
+    subject: m.subject,
+    text: m.body,
+    date: m.email_time_stamp,
+    read: m.read,
+    star: m.star,
+  });
+}
     res.json({ message: "Response is comming", mails: newPayload });
   } catch (error) {
     console.error(error);

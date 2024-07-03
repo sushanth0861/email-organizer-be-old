@@ -145,17 +145,28 @@ export const getMailsFromFolder = async (req: Request, res: Response) => {
         },
       },
     });
-    const newPayload= mails.map((m) => {
-        return {
-          id: m.id,
-          name: "...", // You can adjust this as needed
-          email: m.sender,
-          subject: m.subject,
-          text: m.body,
-          date: m.email_time_stamp,
-          read: m.read,
-          star: m.star,}
-      })
+
+    const newPayload = [];
+
+for (const m of mails) {
+  const sender = await prisma.user.findUnique({
+    where: { email_id: m.sender },
+  });
+
+  const name = sender ? `${sender.first_name} ${sender.last_name}` : "...";
+
+  newPayload.push({
+    id: m.id,
+    name, // You can adjust this as needed
+    email: m.sender,
+    subject: m.subject,
+    text: m.body,
+    date: m.email_time_stamp,
+    read: m.read,
+    star: m.star,
+  });
+}
+
 
     res.json({ message: "Mails fetched successfully", mails:newPayload });
   } catch (error) {
