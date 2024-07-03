@@ -8,6 +8,7 @@
     "migrate": "prisma migrate dev",
     "build": "tsc",
     "start": "nodemon src/index.ts",
+    "postinstall": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1",
     "vercel-build": "npx prisma generate && npx prisma migrate deploy && npm run build"
   },
