@@ -1,13 +1,13 @@
 import { Express, Request, Response } from "express";
-import { login, register, userDetails } from "./controller/user.controller";
-import { authenticateJWT } from "./middleware/authenticate";
+import { login, register, userDetails } from "../src/controller/user.controller";
+import { authenticateJWT } from "../src/middleware/authenticate";
 import {
   deleteMail,
   markRead,
   markUnread,
   moveMail,
   sendMail,
-} from "./controller/mail.controler";
+} from "../src/controller/mail.controler";
 import {
   addDraft,
   changeCategory,
@@ -16,14 +16,14 @@ import {
   getMailsByCategory,
   starMail,
   stenMail,
-} from "./controller/misc.controller";
+} from "../src/controller/misc.controller";
 import {
   createFolder,
   getFolders,
   getMailsFromFolder,
   removeMailFromFolder,
   saveMailToFolder,
-} from "./controller/folder.controler";
+} from "../src/controller/folder.controler";
 
 function routes(app: Express) {
   //health check

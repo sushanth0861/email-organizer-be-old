@@ -3,7 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
-import routes from "./routes";
+import routes from "../api";
 import cookieParser from "cookie-parser";
 import { handleNewUser } from "./service/user-ws-service";
 // const SMTPServer = require("smtp-server").SMTPServer;
