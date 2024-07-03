@@ -196,7 +196,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -207,7 +207,7 @@ const config = {
   },
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id            String     @id @default(cuid())\n  first_name    String\n  last_name     String\n  email_id      String     @unique\n  password      String\n  date_of_birth String?\n  phone_number  String?\n  // email         Email[]\n  folders       Folders[]\n  category      Category[]\n  Draft         Draft[]\n}\n\nmodel Email {\n  id               String   @id @default(cuid())\n  sender           String\n  reciver          String\n  subject          String\n  body             String\n  email_time_stamp DateTime @default(now())\n  orignal_email_id String\n  read             Boolean\n  star             Boolean\n\n  // user User @relation(fields: [reciver], references: [id], onDelete: Cascade)\n}\n\nmodel Folders {\n  id      String   @id @default(cuid())\n  user_id String\n  name    String\n  mails   String[]\n  user    User     @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Category {\n  id      String   @id @default(cuid())\n  user_id String   @unique\n  inbox   String[]\n  trash   String[]\n  archive String[]\n  junk    String[]\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Draft {\n  id      String @id @default(cuid())\n  user_id String\n  from    String\n  to      String\n  subject String\n  text    String\n  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n",
   "inlineSchemaHash": "a4c58545df04bf0e1ebe48b3cdaeba9a9e51b055feab8c0f100b34d64a8ff145",
-  "copyEngine": false
+  "copyEngine": true
 }
 config.dirname = '/'
 
