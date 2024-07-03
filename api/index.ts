@@ -1,4 +1,5 @@
 import { Express, Request, Response } from "express";
+import cors from "cors";
 import { login, register, userDetails } from "../src/controller/user.controller";
 import { authenticateJWT } from "../src/middleware/authenticate";
 import {
@@ -26,6 +27,9 @@ import {
 } from "../src/controller/folder.controler";
 
 function routes(app: Express) {
+  // Enable CORS for all routes
+  app.use(cors());
+
   //health check
   app.get("/api/test", async (req: Request, res: Response) => {
     res.send("Server is healthy");
@@ -35,15 +39,15 @@ function routes(app: Express) {
   app.post("/api/login", login);
   app.post("/api/get-user-details", authenticateJWT, userDetails);
 
-  app.post("/api/send-mail", sendMail); //handel drafts
+  app.post("/api/send-mail", sendMail); // handle drafts
   app.post("/api/delete-mail", deleteMail);
 
   app.post("/api/get-mail", getAllMail);
-  // app.post("/api/get-mail-by-category",  getMail)
+  // app.post("/api/get-mail-by-category", getMail)
   app.post("/api/change-category", changeCategory);
   app.post("/api/get-mail-by-category", getMailsByCategory);
 
-  //folders routes
+  // folders routes
   app.post("/api/get-folders", getFolders);
   app.post("/api/create-folder", createFolder);
   app.post("/api/add-mail-to-folder", saveMailToFolder);
@@ -55,13 +59,12 @@ function routes(app: Express) {
 
   app.post("/api/add-draft", addDraft);
   app.post("/api/get-draft", getDrafts);
- 
+
   app.post("/api/star-mail", starMail);
 
   app.post("/api/move-mail", moveMail);
 
   app.post("/api/sent-mail", stenMail);
-
 }
 
 export default routes;
