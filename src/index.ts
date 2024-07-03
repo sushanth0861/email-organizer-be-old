@@ -32,7 +32,7 @@ const smtpServer = new SMTPServer({
 smtpServer.listen(25, () => {
   console.log("smtp server listning on 25");
 });
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 
