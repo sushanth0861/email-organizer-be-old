@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Email" ALTER COLUMN "email_time_stamp" SET DEFAULT CURRENT_TIMESTAMP;

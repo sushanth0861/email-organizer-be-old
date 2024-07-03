@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/index.ts",  
+        "use": "@vercel/node"   
+      },
+      {
+        "src": "prisma/schema.prisma",
+        "use": "@prisma/cli"            
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/.*",
+        "dest": "src/index.ts" 
+      }
+    ],
+    "env": {
+        "PORT": "8000",
+        "DATABASE_URL":"postgresql://email-organizer_owner:hyg0nqCfiQx6@ep-dry-bar-a5a2a2zg.us-east-2.aws.neon.tech/email-organizer?sslmode:require",
+        "NODE_ENV":"dev",
+        "JWT_SECRET":"786347dadsfrgth4203847jnd2lj3ne23",
+        "DOMAIN" : "triomail.com"
+    }
+  }
+  
