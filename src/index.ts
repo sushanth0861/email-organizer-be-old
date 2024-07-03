@@ -6,32 +6,32 @@ import cors from "cors";
 import routes from "./routes";
 import cookieParser from "cookie-parser";
 import { handleNewUser } from "./service/user-ws-service";
-const SMTPServer = require("smtp-server").SMTPServer;
-const smtpServer = new SMTPServer({
-  allowInsecureAuth: true,
-  authOptional: true,
-  onConnect(session, cb) {
-    console.log("onConnect", session.id);
-    cb();
-  },
-  onMailFrom(address, session, cb) {
-    console.log("onMailfrom", address.address, session.id);
-    cb();
-  },
-  onRcptTo(address, session, cb) {
-    console.log("onRcptTo", address.address, session.id);
-    cb();
-  },
-  onData(stream, session, cb) {
-    stream.on("data", (data) => {
-      console.log(`onData ${data.toString()}`);
-    });
-    stream.on("end", cb);
-  },
-});
-smtpServer.listen(25, () => {
-  console.log("smtp server listning on 25");
-});
+// const SMTPServer = require("smtp-server").SMTPServer;
+// const smtpServer = new SMTPServer({
+//   allowInsecureAuth: true,
+//   authOptional: true,
+//   onConnect(session, cb) {
+//     console.log("onConnect", session.id);
+//     cb();
+//   },
+//   onMailFrom(address, session, cb) {
+//     console.log("onMailfrom", address.address, session.id);
+//     cb();
+//   },
+//   onRcptTo(address, session, cb) {
+//     console.log("onRcptTo", address.address, session.id);
+//     cb();
+//   },
+//   onData(stream, session, cb) {
+//     stream.on("data", (data) => {
+//       console.log(`onData ${data.toString()}`);
+//     });
+//     stream.on("end", cb);
+//   },
+// });
+// smtpServer.listen(25, () => {
+//   console.log("smtp server listning on 25");
+// });
 const port = process.env.PORT || 8000;
 
 const app = express();
