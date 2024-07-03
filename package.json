@@ -8,7 +8,7 @@
     "migrate": "prisma migrate dev",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build": "npx prisma generate && npx prisma migrate deploy && npm run build"
+    "vercel-build": "npx prisma generate && npx prisma migrate deploy && nodemon src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -29,12 +29,12 @@
     "smtp-server": "^3.13.4",
     "socket.io": "^4.7.5",
     "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "prisma": "^5.16.1"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.7",
     "@types/jsonwebtoken": "^9.0.6",
-    "@types/node": "^20.13.0",
-    "prisma": "^5.16.1"
+    "@types/node": "^20.13.0"
   }
 }
